@@ -1,4 +1,14 @@
 <h1>Comments</h1>
 <ul>
-    <li *ngFor="let comment of comments">{{comment}}</li>
+    <li *ngFor="let comment of comments; let i=index">
+    -{{comment.text}} by: {{comment.author}}
+    <button class="button" (click)='editComment(i)'>Update Comment</button>
+    <button class="button" (click)='removeComment(i)'>Delete Comment</button>
+    </li>
 </ul>
+
+<h2>Enter your comment below to post a new comment, or use the 'Update Comment' button to update a current comment with your input!</h2>
+<input type="text" [(ngModel)]="comment" placeholder="Enter Comment">
+<input type="text" [(ngModel)]="author" placeholder="Author">
+<br>
+<button class="button" (click)='newCommentPost()'>Post Comment</button>
